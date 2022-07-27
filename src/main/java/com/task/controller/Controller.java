@@ -21,4 +21,10 @@ public class Controller
     {
         return service.listAll();
     }
+
+    @PostMapping("/empl")
+	 public void add(@RequestBody Employee empy) 
+	 {
+	    service.save(empy);
+	 }
 }
