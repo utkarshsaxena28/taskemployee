@@ -27,4 +27,9 @@ public class Controller
 	 {
 	    service.save(empy);
 	 }
+
+    @DeleteMapping("/products/{id}")
+    public void delete(@PathVariable Integer id) {
+        service.delete(id);
+    }
 }
