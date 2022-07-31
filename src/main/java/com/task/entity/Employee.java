@@ -75,8 +75,5 @@ public class Employee
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
-	
-	
-	
 
 }
