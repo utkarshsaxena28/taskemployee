@@ -10,7 +10,8 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
-public class Employee implements Serializable {
+public class Employee implements Serializable 
+{
 	@Id
     private int id;
 	
