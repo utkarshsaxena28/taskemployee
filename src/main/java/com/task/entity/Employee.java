@@ -2,16 +2,35 @@ package com.task.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Entity
-public class Employee 
-{
+public class Employee implements Serializable {
 	@Id
     private int id;
+	
+	@NotEmpty
+	@Size(min = 4, message = "min 4 required" )
     private String name;
+	
+	@NotNull
     private int aadhar;
+	
+	@NotEmpty
+	@Size(min = 5, message = "min 5 required" )
     private String address;
+	
+	@NotEmpty
+	@Size(min = 5, message = "min 5 required" )
     private String location;
+	
+	@Min(value = 40000, message = "Salary must be greater than 40000")
+	@Max(value = 100000,message = "Salary must be smaller than 100000")
     private int salary;
     
 	public Employee(int id, String name, int aadhar, String address, String location, int salary) {
@@ -75,8 +94,5 @@ public class Employee
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
-	
-	
-	
 
 }

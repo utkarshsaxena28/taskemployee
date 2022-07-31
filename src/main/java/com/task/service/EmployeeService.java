@@ -14,26 +14,37 @@ import com.task.repo.EmployeeRepo;
 public class EmployeeService 
 {
 	@Autowired
-    private EmployeeRepo repo;
+    private EmployeeRepo empRepo;
 	
-	public List<Employee> listAll() 
-    {
-        return repo.findAll();
+	// Getting list of all employees present in database
+	public List<Employee> listAll() {
+		List<Employee> list=  (List<Employee>) this.empRepo.findAll();
+		return list;
     }
 	
-	public Employee get(Integer id) 
-    {
-        return repo.findById(id).get();
+	// get Employee by id
+	public Employee getEmployeeById(int id) {
+		Employee result = empRepo.getReferenceById(id);
+		return result;
     }
 	
-	public void save(Employee emp) 
-    {
-        repo.save(emp);
+	// Adding the employee or Posting the employee
+	public Employee addEmployee(Employee emp) {
+		Employee result = empRepo.save(emp);;
+		return result;
     }
 	
-	public void delete(Integer id) 
-    {
-        repo.deleteById(id);
-    }
+	
+	// Update the Employee
+	public Employee updateEmp(Employee emp, int Eid) {	
+    	emp.setId(Eid);
+    	Employee result = empRepo.save(emp);
+    	return result;
+	}
+	
+	// Deleting the Employee
+	public void delete(Integer id) {
+		empRepo.deleteById(id);
+	}
 
 }
