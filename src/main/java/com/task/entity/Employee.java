@@ -1,5 +1,8 @@
 package com.task.entity;
 
+import java.io.Serializable;
+
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
@@ -7,11 +10,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 
 @Entity
-public class Employee implements Serializable 
-{
+public class Employee implements Serializable {
 	@Id
     private int id;
 	
