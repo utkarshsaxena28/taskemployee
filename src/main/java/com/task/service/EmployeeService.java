@@ -2,6 +2,7 @@ package com.task.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,8 +12,8 @@ import com.task.repo.EmployeeRepo;
 
 @Service
 @Transactional
-public class EmployeeService 
-{
+public class EmployeeService {
+	
 	@Autowired
     private EmployeeRepo empRepo;
 	
@@ -41,7 +42,7 @@ public class EmployeeService
     	Employee result = empRepo.save(emp);
     	return result;
 	}
-
+	
 	// Partially Update the Employee
 	public Employee partiallyUpdateEmp(Employee emp, int Eid) {	
 	    emp.setId(Eid);
