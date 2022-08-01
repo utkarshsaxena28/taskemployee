@@ -28,13 +28,13 @@ public class EmployeeController {
 	static Logger logger = LogManager.getLogger(TaskemployeeApplication.class);
 	
 	@Autowired
-    private EmployeeService employeeService;
+	private EmployeeService employeeService;
 
 	@GetMapping("/getemployee")
-    public List<Employee> list() {
+	public List<Employee> list() {
 		logger.info("Getting the list of all employees");
 		return employeeService.listAll();
-    }
+	}
 	
 	@GetMapping("/employeeid/{id}")
 	public Employee getEmployee(@PathVariable("id") int id) {
@@ -56,7 +56,7 @@ public class EmployeeController {
 		employeeService.updateEmp(empl,id);
 		int id1 = empl.getId();
 		logger.info("Updating Employee having id equale to {}............", id1);
-	    return empl;
+		return empl;
 	}
 	
 	@PatchMapping("/patchemployee/{id}")
@@ -64,13 +64,13 @@ public class EmployeeController {
 		employeeService.partiallyUpdateEmp(empl,id);
 		int id2 = empl.getId();
 		logger.info("Updating Employee having id equale to {}............", id2);
-	    return empl;
+		return empl;
 	}
 	
 	@DeleteMapping("/deleteemployee/{id}")
-    public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable Integer id) {
 		logger.info("Employee having id equale to {} is deleted.............", id);
 		employeeService.delete(id);
-    }	
+	}	
 	
 }
