@@ -41,6 +41,13 @@ public class EmployeeService
     	Employee result = empRepo.save(emp);
     	return result;
 	}
+
+	// Partially Update the Employee
+	public Employee partiallyUpdateEmp(Employee emp, int Eid) {	
+	    emp.setId(Eid);
+	    Employee result = empRepo.save(emp);
+	    return result;
+	}
 	
 	// Deleting the Employee
 	public void delete(Integer id) {
