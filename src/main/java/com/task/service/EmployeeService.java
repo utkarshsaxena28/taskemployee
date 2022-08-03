@@ -15,7 +15,7 @@ import com.task.repo.EmployeeRepo;
 public class EmployeeService {
 	
 	@Autowired
-    private EmployeeRepo empRepo;
+	private EmployeeRepo empRepo;
 	
 	// Getting list of all employees present in database
 	public List<Employee> listAll() {
@@ -31,23 +31,22 @@ public class EmployeeService {
 	
 	// Adding the employee or Posting the employee
 	public Employee addEmployee(Employee emp) {
-		Employee result = empRepo.save(emp);;
+		Employee result = empRepo.save(emp);
 		return result;
     }
-	
-	
+
 	// Update the Employee
 	public Employee updateEmp(Employee emp, int Eid) {	
-    	emp.setId(Eid);
-    	Employee result = empRepo.save(emp);
-    	return result;
+		emp.setId(Eid);
+		Employee result = empRepo.save(emp);
+		return result;
 	}
 	
 	// Partially Update the Employee
 	public Employee partiallyUpdateEmp(Employee emp, int Eid) {	
-	    emp.setId(Eid);
-	    Employee result = empRepo.save(emp);
-	    return result;
+		emp.setId(Eid);
+		Employee result = empRepo.save(emp);
+		return result;
 	}
 	
 	// Deleting the Employee
