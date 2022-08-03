@@ -54,4 +54,10 @@ public class EmployeeService {
 		empRepo.deleteById(id);
 	}
 
+	// get Employee by Name
+	public Employee getEmployeeByName(String ename) {
+		Employee result = empRepo.getReferenceByName(ename);
+		return result;
+	}
+
 }
