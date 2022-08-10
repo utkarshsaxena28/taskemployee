@@ -35,7 +35,14 @@ public class Employee implements Serializable {
 	@Max(value = 100000,message = "Salary must be smaller than 100000")
     private int salary;
     
-	public Employee(int id, String name, int aadhar, String address, String location, int salary) {
+	@NotEmpty
+	private String password;
+
+	public Employee() {
+		super();
+	}
+
+	public Employee(int id, String name, int aadhar, String address, String location, int salary, String password) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -43,11 +50,18 @@ public class Employee implements Serializable {
 		this.address = address;
 		this.location = location;
 		this.salary = salary;
+		this.password = password;
 	}
 
-	public Employee() {
-		super();
+	public String getPassword() {
+		return password;
 	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
 
 	public int getId() {
 		return id;

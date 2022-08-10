@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,20 +13,27 @@ import com.task.repo.EmployeeRepo;
 
 @Service
 @Transactional
+@Component
 public class EmployeeService {
-	
+
 	@Autowired
 	private EmployeeRepo empRepo;
 	
 	// Getting list of all employees present in database
 	public List<Employee> listAll() {
-		List<Employee> list=  (List<Employee>) this.empRepo.findAll();
+		List<Employee> list=  (List<Employee>) empRepo.findAll();
 		return list;
     }
 	
 	// get Employee by id
 	public Employee getEmployeeById(int id) {
-		Employee result = empRepo.getReferenceById(id);
+		Employee result = null;
+		try{
+			result = empRepo.getReferenceById(id);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 		return result;
     }
 	
@@ -54,10 +62,12 @@ public class EmployeeService {
 		empRepo.deleteById(id);
 	}
 
+	
 	// get Employee by Name
-	public Employee getEmployeeByName(String ename) {
-		Employee result = empRepo.getReferenceByName(ename);
+	/*
+	public Employee getEmployeeByName(String name) {
+		Employee result = empRepo.findByUsername(name);
 		return result;
-	}
+	}*/
 
 }
