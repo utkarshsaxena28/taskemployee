@@ -34,20 +34,20 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 
 	@GetMapping("/getemployee")
-	public ResponseEntity<List<Employee>> list() {
+	public ResponseEntity<Object> list() {
 
 		logger.info("Getting the list of all employees");
 
 		List<Employee> list = employeeService.listAll();
 
 		if (list.size()<=0) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+			return new ResponseEntity<>("no employees found in data base" ,HttpStatus.NOT_FOUND);
 		}
 		return ResponseEntity.of(Optional.of(list));
 	}
-	
+
 	@GetMapping("/employeeid/{id}")
-	public ResponseEntity<Employee> getEmployee(@PathVariable("id") int id) {
+	public ResponseEntity<Object> getEmployee(@PathVariable("id") int id) {
 
 		logger.info("getting employee by id number {}..............", id);
 		//return "Employee data "+id;
@@ -55,7 +55,7 @@ public class EmployeeController {
 		Employee employee = employeeService.getEmployeeById(id);
 
 		if (employee==null) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+			return new ResponseEntity<>("no employees found in data base with this id", HttpStatus.NOT_FOUND);
 		}
 		return ResponseEntity.of(Optional.of(employee));
 	}
